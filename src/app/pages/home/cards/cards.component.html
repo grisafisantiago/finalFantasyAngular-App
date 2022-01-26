@@ -1,0 +1,18 @@
+<div *ngFor="let date of data; let i =index">
+    <hr>
+    <div class="row">
+        <div class="col" *ngIf="date.picture else chars">
+            <img [src]="date.picture" [alt]="date.name" class="img img-thumbnail mt-3">
+            <h4 class="mb-3">{{date.name}}</h4>
+            <h5>{{date.description}}</h5>
+        </div>
+        <ng-template #chars>
+            <div class="col">
+                <img [src]="date.pictures[0].url" [alt]="date.name" class="img img-thumbnail mt-3">
+                <h4 class="mb-3">{{date.name}}</h4>
+                <h5>{{date.description}}</h5>
+            </div>
+        </ng-template>
+    </div>
+    <hr>
+</div>

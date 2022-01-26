@@ -1,0 +1,20 @@
+<img src="../../../../../assets/logo.png" (click)="goHome()">
+<div class="span12">
+    <app-options (categoryEmitted)="getCategory($event)"></app-options>
+    <form id="custom-search-form" class="form-search form-horizontal pull-right" autocomplete="off"
+        [formGroup]="SearchForm" (submit)="submitForm()">
+        <div class="input-append span12 mt-2">
+            <input type="text" class="search-query" placeholder="Search" formControlName="inputSearchField"
+                (keyup.enter)="submitForm()">
+            <button type="submit" class="btn" [disabled]="this.SearchForm.invalid"><span class="oi"
+                    data-glyph="magnifying-glass"></span></button>
+        </div>
+        <br>
+        <span class="alert alert-danger mt-5"
+            *ngIf="showErrors('inputSearchField') && (this.SearchForm?.get('inputSearchField')?.value).trim().length===0">No
+            deje espacios vacios </span>
+        <span class="alert alert-danger mt-5"
+            *ngIf="showErrors('inputSearchField') && (this.SearchForm?.get('inputSearchField')?.value).trim().length>=1 && (this.SearchForm?.get('inputSearchField')?.value).trim().length<=3">El
+            campo tiene menos de 3 espacios </span>
+    </form>
+</div>
